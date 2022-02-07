@@ -1,0 +1,5 @@
+[centos-nfv-openvswitch]
+name=CentOS-8 - NFV OpenvSwitch
+mirrorlist=http://mirrorlist.centos.org/?release=8-stream&arch=$basearch&repo=nfv-openvswitch-2
+gpgcheck=0
+enabled=1

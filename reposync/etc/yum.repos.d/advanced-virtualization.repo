@@ -1,0 +1,5 @@
+[advanced-virtualization]
+name=CentOS-8 - Advanced Virtualization
+mirrorlist=http://mirrorlist.centos.org/?release=8-stream&arch=$basearch&repo=virt-advancedvirt-common
+gpgcheck=0
+enabled=1

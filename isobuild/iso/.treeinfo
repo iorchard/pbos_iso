@@ -1,0 +1,59 @@
+[checksums]
+images/efiboot.img = sha256:f54ad08b586631b52b3d6e57d54fce42c8898bd6e1c72511aa6cfd72a1306274
+images/install.img = sha256:f65abcc4af65f5f704cb47c4cee5f5cfa1d1bbb00ab70d3dd11756af88372e3e
+images/pxeboot/initrd.img = sha256:49428a004f023557af2bc9adecc5a389a03cd42e39a922c67229197473030753
+images/pxeboot/vmlinuz = sha256:0a10bf6826eefb396a81099253ebd08e587151e7d32bf2227669aa6031763299
+
+[general]
+; WARNING.0 = This section provides compatibility with pre-productmd treeinfos.
+; WARNING.1 = Read productmd documentation for details about new format.
+arch = x86_64
+family = Rocky Linux
+name = Rocky Linux 8
+packagedir = BaseOS/Packages
+platforms = x86_64,xen
+repository = BaseOS
+timestamp = 1636882153
+variant = BaseOS
+variants = BaseOS
+version = 8
+
+[header]
+type = productmd.treeinfo
+version = 1.2
+
+[images-x86_64]
+efiboot.img = images/efiboot.img
+initrd = images/pxeboot/initrd.img
+kernel = images/pxeboot/vmlinuz
+
+[images-xen]
+initrd = images/pxeboot/initrd.img
+kernel = images/pxeboot/vmlinuz
+
+[media]
+discnum = 1
+totaldiscs = 1
+
+[release]
+name = Rocky Linux
+short = Rocky
+version = 8
+
+[stage2]
+mainimage = images/install.img
+
+[tree]
+arch = x86_64
+build_timestamp = 1636882153
+platforms = x86_64,xen
+variants = BaseOS
+
+[variant-BaseOS]
+id = BaseOS
+name = BaseOS
+packages = BaseOS/Packages
+repository = BaseOS
+type = variant
+uid = BaseOS
+
