@@ -7,6 +7,7 @@ LABEL="Rocky-8-5-x86_64-dvd"
 arr=()
 
 cp -af /srv/pbos/iso/* /iso/
+cp -af /srv/pbos/pip /iso/
 mkdir -p /iso/{BaseOS,pbos}/Packages
 cat pbos.rpm_list | while IFS= read -r line;do
   arr=($line)
@@ -17,7 +18,7 @@ cat pbos.rpm_list | while IFS= read -r line;do
   echo "Getting $p."
 
   # lshw version starts with B so I added B in name search.
-  RPM=$(find /srv/pbos/ -name ${p}-[0-9B]*.${a}.rpm | head -1)
+  RPM=$(find /srv/pbos/$r/ -name ${p}-[0-9B]*.${a}.rpm)
   if [[ $RPM =~ .*baseos.* ]];then
     cp -af $RPM /iso/BaseOS/Packages/
   else
