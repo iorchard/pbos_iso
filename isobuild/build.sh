@@ -3,7 +3,7 @@
 set -euo pipefail
 
 VER=8.5
-LABEL="Rocky-8-5-x86_64-dvd"
+LABEL="PBOS-Rocky-8-5-x86_64-dvd"
 arr=()
 
 cp -af /srv/pbos/iso/* /iso/
@@ -18,11 +18,17 @@ cat pbos.rpm_list | while IFS= read -r line;do
   echo "Getting $p."
 
   # lshw version starts with B so I added B in name search.
-  RPM=$(find /srv/pbos/$r/ -name ${p}-[0-9B]*.${a}.rpm)
-  if [[ $RPM =~ .*baseos.* ]];then
-    cp -af $RPM /iso/BaseOS/Packages/
-  else
+  # first find the package in baseos if repo is not baseos.
+  if [[ "$r" != "baseos" ]];then
+    RPM=$(find /srv/pbos/baseos/ -name ${p}-[0-9B]*.${a}.rpm)
+    if [[ "x$RPM" != "x" ]];then
+      cp -af $RPM /iso/BaseOS/Packages/
+    fi
+    RPM=$(find /srv/pbos/$r/ -name ${p}-[0-9B]*.${a}.rpm)
     cp -af $RPM /iso/pbos/Packages/
+  else
+    RPM=$(find /srv/pbos/$r/ -name ${p}-[0-9B]*.${a}.rpm)
+    cp -af $RPM /iso/BaseOS/Packages/
   fi
 done
 
