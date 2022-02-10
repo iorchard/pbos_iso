@@ -67,5 +67,3 @@ Run pbos-iso container to build iso file.::
 The pbos-8.5.iso file will be created in /srv/pbos/ directory.
 
 You can use this iso file to install PBOS.
-
-

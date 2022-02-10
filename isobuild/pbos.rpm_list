@@ -79,6 +79,7 @@ dbus-glib.x86_64                                  0.110-2.el8                   
 dbus-libs.x86_64                                  1:1.12.8-12.el8_4.2                               @baseos                
 dbus-tools.x86_64                                 1:1.12.8-12.el8_4.2                               @baseos                
 dbus.x86_64                                       1:1.12.8-12.el8_4.2                               @baseos                
+dbxtool.x86_64                                    8-5.el8_3.2                                       @baseos
 dejavu-fonts-common.noarch                        2.35-7.el8                                        @baseos                  
 dejavu-sans-fonts.noarch                          2.35-7.el8                                        @baseos                  
 dejavu-sans-mono-fonts.noarch                     2.35-7.el8                                        @baseos                  
@@ -109,6 +110,10 @@ dracut.x86_64                                     049-135.git20210121.el8       
 e2fsprogs-libs.x86_64                             1.45.6-1.el8.1                                    @baseos                
 e2fsprogs.x86_64                                  1.45.6-1.el8.1                                    @baseos                
 edk2-ovmf.noarch                                  20210527gite1999b264f1f-3.el8                     @appstream               
+efi-filesystem.noarch                             3-3.el8                                           @baseos
+efibootmgr.x86_64                                 16-1.el8                                          @baseos
+efivar.x86_64                                     37-4.el8                                          @baseos
+efivar-libs.x86_64                                37-4.el8                                          @baseos
 elfutils-debuginfod-client.x86_64                 0.182-3.el8_4                                     @baseos                  
 elfutils-default-yama-scope.noarch                0.182-3.el8_4                                     @baseos                  
 elfutils-libelf.x86_64                            0.182-3.el8_4                                     @baseos                  
@@ -175,6 +180,7 @@ graphviz.x86_64                                   2.40.1-43.el8                 
 grep.x86_64                                       3.1-6.el8                                         @baseos                
 groff-base.x86_64                                 1.22.3-18.el8                                     @baseos                
 grub2-common.noarch                               1:2.02-99.el8                                     @baseos                
+grub2-efi-x64.x86_64                        1:2.02-106.el8.0.2                     @baseos
 grub2-pc-modules.noarch                           1:2.02-99.el8                                     @baseos                
 grub2-pc.x86_64                                   1:2.02-99.el8                                     @baseos                
 grub2-tools-extra.x86_64                          1:2.02-99.el8                                     @baseos                
@@ -493,6 +499,7 @@ mesa-libgbm.x86_64                                21.1.5-1.el8.0                
 mesa-libglapi.x86_64                              21.1.5-1.el8.0                                    @appstream               
 mesa-libGL.x86_64                                 21.1.5-1.el8.0                                    @appstream               
 mod_http2.x86_64                                  1.15.7-3.module+el8.5.0+695+1fa8055e              @appstream               
+mokutil.x86_64                                    1:0.3.0-11.el8                                    @baseos
 mozjs60.x86_64                                    60.9.0-4.el8                                      @baseos                
 mpfr.x86_64                                       3.1.6-1.el8                                       @baseos                
 mtools.x86_64                                     4.0.18-14.el8                                     @baseos                  
@@ -1041,6 +1048,7 @@ selinux-policy-devel.noarch                       3.14.3-67.el8_4.1             
 selinux-policy.noarch                             3.14.3-67.el8_4.1                                 @baseos                  
 selinux-policy-targeted.noarch                    3.14.3-67.el8_4.1                                 @baseos                  
 setup.noarch                                      2.12.2-6.el8                                      @baseos                
+shim-x64.x86_64                                   15.4-2.el8_5.2.rocky                              @baseos
 sg3_utils-libs.x86_64                             1.44-5.el8                                        @baseos                
 sg3_utils.x86_64                                  1.44-5.el8                                        @baseos                
 sgabios-bin.noarch                                1:0.20170427git-3.module+el8.4.0+534+4680a14e     @appstream               

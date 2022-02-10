@@ -2,11 +2,16 @@
 
 set -euo pipefail
 
-VER=8.5
+OUTDIR="/srv/pbos/artifacts"
+VER=${1:-8.5}
 LABEL="PBOS-Rocky-8-5-x86_64-dvd"
 arr=()
 
+mkdir -p $OUTDIR
 cp -af /srv/pbos/iso/* /iso/
+# pip download
+python3 -m pip download --dest /srv/pbos/pip --requirement pbos-pip.txt
+# rpm copy
 cp -af /srv/pbos/pip /iso/
 mkdir -p /iso/{BaseOS,pbos}/Packages
 cat pbos.rpm_list | while IFS= read -r line;do
@@ -38,6 +43,16 @@ createrepo -v pbos
 repo2module --module-name pbos --module-stream stable pbos pbos/modules.yaml
 createrepo_mod pbos
 
-genisoimage -o /srv/pbos/pbos-${VER}.iso -b isolinux/isolinux.bin \
-        -c isolinux/boot.cat --no-emul-boot --boot-load-size 4 \
-        --boot-info-table -J -R -V "$LABEL" .
+genisoimage -o $OUTDIR/pbos-${VER}.iso \
+            -b isolinux/isolinux.bin \
+            -c isolinux/boot.cat \
+            --no-emul-boot \
+            --boot-load-size 4 \
+            --boot-info-table \
+            --eltorito-alt-boot \
+            -e images/efiboot.img \
+            --no-emul-boot \
+            -J -R -V "$LABEL" .
+
+cd $OUTDIR
+md5sum pbos-${VER}.iso > pbos-${VER}.md5sum
