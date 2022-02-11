@@ -53,7 +53,8 @@ ceph-radosgw.x86_64                               2:16.2.7-0.el8                
 ceph-selinux.x86_64                               2:16.2.7-0.el8                                    @ceph                    
 checkpolicy.x86_64                                2.9-1.el8                                         @baseos                
 chkconfig.x86_64                                  1.19.1-1.el8                                      @baseos                  
-chrony.x86_64                                     4.1-1.el8                                         @baseos                  
+chrony.x86_64                                     4.1-1.el8                                         @baseos
+cloud-init.noarch                                 21.1-7.el8_5.3                                    @appstream
 cloud-utils-growpart.noarch                       0.31-1.el8                                        @appstream               
 conntrack-tools.x86_64                            1.4.4-10.el8                                      @baseos                  
 coreutils-common.x86_64                           8.30-8.el8                                        @baseos                

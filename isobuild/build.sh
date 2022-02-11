@@ -30,7 +30,8 @@ cat pbos.rpm_list | while IFS= read -r line;do
       cp -af $RPM /iso/BaseOS/Packages/
     fi
     RPM=$(find /srv/pbos/$r/ -name ${p}-[0-9B]*.${a}.rpm)
-    cp -af $RPM /iso/pbos/Packages/
+    # sshpass is in epel repo but I want to copy it to baseos.
+    [[ "$p" = "sshpass" ]] && cp -af $RPM /iso/BaseOS/Packages/ || cp -af $RPM /iso/pbos/Packages/
   else
     RPM=$(find /srv/pbos/$r/ -name ${p}-[0-9B]*.${a}.rpm)
     cp -af $RPM /iso/BaseOS/Packages/
