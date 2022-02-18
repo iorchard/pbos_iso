@@ -5,7 +5,7 @@ PBOS-ISO provides custom iso and repositories for PBOS installation.
 PBOS is Pure Baremetal OpenStack.(https://github.com/iorchard/pbos-ansible)
 
 * pbos-reposync: create and update PBOS repositories.
-* pbos-iso: create a PBOS iso file using PBOS repositories.
+* pbos-isobuild: build a PBOS iso file using PBOS repositories.
 
 pre-requisite
 -----------------
@@ -36,8 +36,8 @@ Run pbos-reposync container to create/update PBOS repositories.::
     $ podman run --rm -v/srv/pbos:/srv/pbos jijisa/pbos-reposync:8.5
 
 
-pbos-iso
------------
+pbos-isobuild
+--------------
 
 This is an image to create pbos ISO file.
 
@@ -50,7 +50,7 @@ Copy rocky linux minimal iso to /srv/pbos/iso/.::
 
 Build a container image.::
 
-    $ podman build -t jijisa/pbos-iso:8.5 .
+    $ podman build -t jijisa/pbos-isobuild:8.5 .
 
 Push the image.::
 
@@ -58,12 +58,12 @@ Push the image.::
     Username:
     Password:
     Login succeeded.
-    $ podman push jijisa/pbos-iso:8.5
+    $ podman push jijisa/pbos-isobuild:8.5
 
 Run pbos-iso container to build iso file.::
 
-    $ podman run --rm -v /srv/pbos:/srv/pbos jijisa/pbos-iso:8.5
+    $ podman run --rm -v /srv/pbos:/srv/pbos jijisa/pbos-isobuild:8.5
 
-The pbos-8.5.iso file will be created in /srv/pbos/ directory.
+The iso file will be created in /srv/pbos/ directory.
 
 You can use this iso file to install PBOS.
