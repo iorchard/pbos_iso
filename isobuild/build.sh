@@ -1,18 +1,31 @@
 #!/bin/bash
 
-set -euo pipefail
+set -eo pipefail
 
-OUTDIR="/srv/pbos/artifacts"
+BASEDIR="/srv/pbos"
+OUTDIR="$BASEDIR/artifacts"
 VER=${1:-8.5}
+TAG=${2:-1.0.0}
 LABEL="PBOS-Rocky-8-5-x86_64-dvd"
-arr=()
+declare arr=()
 
 mkdir -p $OUTDIR
-cp -af /srv/pbos/iso/* /iso/
+cp -af $BASEDIR/iso/* /iso/
+# Put pbos-ansible tarball with pbos.* roles.
+curl -Lo pbos-ansible-${TAG}.tar.gz \
+    https://github.com/iorchard/pbos-ansible/archive/refs/tags/${TAG}.tar.gz
+tar xzf pbos-ansible-${TAG}.tar.gz
+ansible-galaxy role install --roles-path /pbos-ansible-${TAG}/roles \
+    --role-file requirements.yml
+cp requirements.yml pbos-ansible-${TAG}/
+tar czf pbos-ansible-${TAG}.tar.gz pbos-ansible-${TAG}
+cp -f pbos-ansible-${TAG}.tar.gz /iso/
+
 # pip download
-python3 -m pip download --dest /srv/pbos/pip --requirement pbos-pip.txt
+python3 -m pip download --dest $BASEDIR/pip --requirement pip-requirements.txt
+cp -af $BASEDIR/pip /iso/
+
 # rpm copy
-cp -af /srv/pbos/pip /iso/
 mkdir -p /iso/{BaseOS,pbos}/Packages
 cat pbos.rpm_list | while IFS= read -r line;do
   arr=($line)
@@ -25,15 +38,14 @@ cat pbos.rpm_list | while IFS= read -r line;do
   # lshw version starts with B so I added B in name search.
   # first find the package in baseos if repo is not baseos.
   if [[ "$r" != "baseos" ]];then
-    RPM=$(find /srv/pbos/baseos/ -name ${p}-[0-9B]*.${a}.rpm)
+    RPM=$(find $BASEDIR/baseos/ -name ${p}-[0-9B]*.${a}.rpm)
     if [[ "x$RPM" != "x" ]];then
       cp -af $RPM /iso/BaseOS/Packages/
     fi
-    RPM=$(find /srv/pbos/$r/ -name ${p}-[0-9B]*.${a}.rpm)
-    # sshpass is in epel repo but I want to copy it to baseos.
-    [[ "$p" = "sshpass" ]] && cp -af $RPM /iso/BaseOS/Packages/ || cp -af $RPM /iso/pbos/Packages/
+    RPM=$(find $BASEDIR/$r/ -name ${p}-[0-9B]*.${a}.rpm)
+    cp -af $RPM /iso/pbos/Packages/
   else
-    RPM=$(find /srv/pbos/$r/ -name ${p}-[0-9B]*.${a}.rpm)
+    RPM=$(find $BASEDIR/$r/ -name ${p}-[0-9B]*.${a}.rpm)
     cp -af $RPM /iso/BaseOS/Packages/
   fi
 done

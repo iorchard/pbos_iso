@@ -15,7 +15,7 @@ platforms = x86_64,xen
 repository = BaseOS
 timestamp = 1636882153
 variant = BaseOS
-variants = BaseOS
+variants = BaseOS,pbos
 version = 8
 
 [header]
@@ -47,7 +47,7 @@ mainimage = images/install.img
 arch = x86_64
 build_timestamp = 1636882153
 platforms = x86_64,xen
-variants = BaseOS
+variants = BaseOS,pbos
 
 [variant-BaseOS]
 id = BaseOS
@@ -56,4 +56,12 @@ packages = BaseOS/Packages
 repository = BaseOS
 type = variant
 uid = BaseOS
+
+[variant-pbos]
+id = pbos
+name = pbos
+packages = pbos/Packages
+repository = pbos
+type = variant
+uid = pbos
 
