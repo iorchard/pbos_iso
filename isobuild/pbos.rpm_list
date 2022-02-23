@@ -347,6 +347,7 @@ libpipeline.x86_64                                1.5.0-2.el8                   
 libpkgconf.x86_64                                 1.4.2-1.el8                                       @baseos                  
 libpmem.x86_64                                    1.6.1-1.el8                                       @appstream               
 libpng.x86_64                                     2:1.6.34-5.el8                                    @baseos                
+libpng15.x86_64                                   1.5.30-7.el8                                      @appstream 
 libproxy.x86_64                                   0.4.15-5.2.el8                                    @baseos                  
 libpsl.x86_64                                     0.20.2-6.el8                                      @baseos                
 libpwquality.x86_64                               1.4.4-3.el8                                       @baseos                

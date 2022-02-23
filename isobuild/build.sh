@@ -12,7 +12,7 @@ declare arr=()
 mkdir -p $OUTDIR
 cp -af $BASEDIR/iso/* /iso/
 # Put pbos-ansible tarball with pbos.* roles.
-curl -Lo pbos-ansible-${TAG}.tar.gz \
+curl -sLo pbos-ansible-${TAG}.tar.gz \
     https://github.com/iorchard/pbos-ansible/archive/refs/tags/${TAG}.tar.gz
 tar xzf pbos-ansible-${TAG}.tar.gz
 ansible-galaxy role install --roles-path /pbos-ansible-${TAG}/roles \
@@ -50,6 +50,12 @@ cat pbos.rpm_list | while IFS= read -r line;do
   fi
 done
 
+# get two custom rpm packages
+cd /iso/pbos/Packages/
+curl -sLO 192.168.151.110:8000/pbos/custom/cloudpc-libvirt-hooks-1.0.0-1.x86_64.rpm
+curl -sLO 192.168.151.110:8000/pbos/custom/qemu-cloudpc-0.26.5.0-1.el8.x86_64.rpm
+
+# create iso
 cd /iso
 createrepo -vg comps_base.xml BaseOS
 createrepo -v pbos
