@@ -119,7 +119,8 @@ elfutils-debuginfod-client.x86_64                 0.182-3.el8_4                 
 elfutils-default-yama-scope.noarch                0.182-3.el8_4                                     @baseos                  
 elfutils-libelf.x86_64                            0.182-3.el8_4                                     @baseos                  
 elfutils-libs.x86_64                              0.182-3.el8_4                                     @baseos                  
-emacs-filesystem.noarch                           1:26.1-7.el8                                      @baseos                  
+emacs-filesystem.noarch                           1:26.1-7.el8                                      @baseos                 
+epel-release.noarch                               8-13.el8                                          @extras
 erlang.x86_64                                     24.2-1.el8                                        @rabbitmq_erlang         
 ethtool.x86_64                                    2:5.8-5.el8                                       @baseos                
 expat.x86_64                                      2.2.5-4.el8                                       @baseos                

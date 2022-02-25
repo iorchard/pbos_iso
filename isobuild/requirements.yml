@@ -5,7 +5,7 @@
 - src: https://github.com/iorchard/pbos.cinder
   version: 1.0.0
 - src: https://github.com/iorchard/pbos.common
-  version: 1.0.1
+  version: 1.0.0
 - src: https://github.com/iorchard/pbos.glance
   version: 1.0.0
 - src: https://github.com/iorchard/pbos.haproxy
@@ -23,7 +23,7 @@
 - src: https://github.com/iorchard/pbos.neutron
   version: 1.0.0
 - src: https://github.com/iorchard/pbos.nova
-  version: 1.0.1
+  version: 1.0.0
 - src: https://github.com/iorchard/pbos.ntp
   version: 1.0.0
 - src: https://github.com/iorchard/pbos.placement
